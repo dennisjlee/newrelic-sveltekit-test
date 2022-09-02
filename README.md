@@ -1,38 +1,27 @@
-# create-svelte
+## This repo is intended to reproduce a problem with SvelteKit + Pino + NewRelic
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+Prerequisite:
+* Create a .env file with newrelic environment variables. For instance:
+```
+NEW_RELIC_APP_NAME=<choose a name here>
+NEW_RELIC_LICENSE_KEY=<enter license key here>
+NEW_RELIC_LOG_LEVEL=trace
+NEW_RELIC_NO_CONFIG_FILE=true
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+To run the app with newrelic enabled in dev mode:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+npm run dev:newrelic -- --open
 ```
 
-## Building
 
-To create a production version of your app:
+To run the app with newrelic enabled in preview mode:
 
 ```bash
 npm run build
+npm run preview:newrelic -- --open
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+In both scenarios above, the command will open the app in your browser, which
+will cause a line to be logged.
