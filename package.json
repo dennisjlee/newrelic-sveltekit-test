@@ -1,23 +1,31 @@
 {
-	"name": "newrelic-sveltekit-test",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/kit": "next",
-		"svelte": "^3.44.0",
-		"svelte-check": "^2.7.1",
-		"svelte-preprocess": "^4.10.6",
-		"tslib": "^2.3.1",
-		"typescript": "^4.7.4",
-		"vite": "^3.1.0-beta.1"
-	},
-	"type": "module"
+  "name": "newrelic-sveltekit-test",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "dev:newrelic": "node -r dotenv/config -r newrelic node_modules/vite/bin/vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "preview:newrelic": "node -r dotenv/config -r newrelic node_modules/vite/bin/vite preview",
+    "prod:newrelic": "node --es-module-specifier-resolution=node -r dotenv/config -r newrelic build",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/kit": "next",
+    "svelte": "^3.44.0",
+    "svelte-check": "^2.7.1",
+    "svelte-preprocess": "^4.10.6",
+    "tslib": "^2.3.1",
+    "typescript": "^4.7.4",
+    "vite": "^3.1.0-beta.1"
+  },
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "newrelic": "^9.0.2",
+    "pino": "^8.4.2"
+  }
 }
